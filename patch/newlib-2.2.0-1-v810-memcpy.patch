@@ -57,9 +57,9 @@ diff -Naur newlib-2.2.0-1-pure/newlib/libc/machine/v810/memcpy.S newlib-2.2.0-1/
 @@ -0,0 +1,50 @@
 +    .section .text
 +    .align  1
-+    .global _memcpy
-+    .type   _memcpy, @function
-+_memcpy:
++    .global memcpy
++    .type   memcpy, @function
++memcpy:
 +    mov     r6, r10
 +    or      r7, r6
 +    andi    3, r6, r0
@@ -104,16 +104,16 @@ diff -Naur newlib-2.2.0-1-pure/newlib/libc/machine/v810/memcpy.S newlib-2.2.0-1/
 +.Lmemcpy_done:
 +    jmp     [r31]    
 +.Lmemcpy_move:
-+    jr      _memmove
++    jr      memmove
 diff -Naur newlib-2.2.0-1-pure/newlib/libc/machine/v810/memmove.S newlib-2.2.0-1/newlib/libc/machine/v810/memmove.S
 --- newlib-2.2.0-1-pure/newlib/libc/machine/v810/memmove.S	1970-01-01 01:00:00.000000000 +0100
 +++ newlib-2.2.0-1/newlib/libc/machine/v810/memmove.S	2023-07-05 18:56:20.115523600 +0100
 @@ -0,0 +1,27 @@
 +    .section .text
 +    .align  1
-+    .global _memmove
-+    .type   _memmove, @function
-+_memmove:
++    .global memmove
++    .type   memmove, @function
++memmove:
 +    mov     r6, r10
 +    # save bitstring registers
 +    mov     r26, r11

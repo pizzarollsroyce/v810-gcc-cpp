@@ -96,6 +96,7 @@ fi
 #---------------------------------------------------------------------------------
 
 export CFLAGS='-O2'
+export CFLAGS_FOR_TARGET='-fno-leading-underscore'
 export CXXFLAGS='-O2'
 
 if [ "$OS" = "Windows_NT" ] ; then
