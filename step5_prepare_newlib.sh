@@ -95,9 +95,10 @@ fi
 # Set the target compiler flags
 #---------------------------------------------------------------------------------
 
-export CFLAGS='-O2'
-export CFLAGS_FOR_TARGET='-fno-leading-underscore'
-export CXXFLAGS='-O2'
+export CFLAGS='-O3'
+export CFLAGS_FOR_TARGET='-O3 -fno-leading-underscore'
+export CXXFLAGS='-O3'
+export CXXFLAGS_FOR_TARGET='-O3 -fno-leading-underscore'
 
 if [ "$OS" = "Windows_NT" ] ; then
   export LDFLAGS='-Wl,-Bstatic'

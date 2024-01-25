@@ -126,8 +126,8 @@ if [ "$OS" = "Windows_NT" ] ; then
 # export LDFLAGS='-Wl,-Bstatic,--whole-archive -lwinpthread -Wl,--no-whole-archive'
   BUILD=
 else
-  export CFLAGS='-O2 -fno-leading-underscore'
-  export CXXFLAGS='-O2'
+  export CFLAGS='-O3 -fno-leading-underscore'
+  export CXXFLAGS='-O3 -fno-leading-underscore'
   export LDFLAGS=
 if [ "$OSNAME" = "Linux" ] ; then
   BUILD='--build=x86_64-linux-gnu'
