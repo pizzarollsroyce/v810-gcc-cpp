@@ -55,6 +55,7 @@ TestFile "archive/newlib-2.2.0-1.tar.gz";
 
 TestFile "patch/newlib-2.2.0-1-v810.patch";
 TestFile "patch/newlib-2.2.0-1-v810-memcpy.patch";
+TestFile "patch/newlib-2.2.0-1-v810-clang-compat.patch";
 
 #---------------------------------------------------------------------------------
 # Prepare Source and Install directories
@@ -75,6 +76,7 @@ PrepareSource()
 
   patch -p 1 -i ../patch/newlib-2.2.0-1-v810.patch
   patch -p 1 -i ../patch/newlib-2.2.0-1-v810-memcpy.patch
+  patch -p 1 -i ../patch/newlib-2.2.0-1-v810-clang-compat.patch
 
   cd ..
 }
@@ -95,10 +97,8 @@ fi
 # Set the target compiler flags
 #---------------------------------------------------------------------------------
 
-export CFLAGS='-O3'
-export CFLAGS_FOR_TARGET='-O3 -fno-leading-underscore'
-export CXXFLAGS='-O3'
-export CXXFLAGS_FOR_TARGET='-O3 -fno-leading-underscore'
+export CFLAGS='-O2'
+export CXXFLAGS='-O2'
 
 if [ "$OS" = "Windows_NT" ] ; then
   export LDFLAGS='-Wl,-Bstatic'
@@ -125,6 +125,14 @@ export TMPDIR=$GITDIR/build/newlib
 
 mkdir -p $TMPDIR
 cd $TMPDIR
+
+export CXX_FOR_TARGET=${HOME}/gits/llvm-v810/build/bin/clang++
+export CC_FOR_TARGET=${HOME}/gits/llvm-v810/build/bin/clang
+export CFLAGS_FOR_TARGET='-Wno-implicit-function-declaration -target v810-unknown-vb -Ofast'
+export AS_FOR_TARGET=${HOME}/gits/llvm-v810/build/bin/llvm-mc
+export AR_FOR_TARGET=${HOME}/gits/llvm-v810/build/bin/llvm-ar
+export LD_FOR_TARGET=${HOME}/gits/llvm-v810/build/bin/ld.lld
+export OBJCOPY_FOR_TARGET=${HOME}/gits/llvm-v810/build/bin/llvm-objcopy
 
 $SRCDIR/configure                       \
   --prefix=$DSTDIR                      \

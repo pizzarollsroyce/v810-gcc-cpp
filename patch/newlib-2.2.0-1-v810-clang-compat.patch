@@ -1,0 +1,14 @@
+diff -Naur archive/newlib-2.2.0-1/libgloss/libnosys/warning.h newlib-2.2.0-1/libgloss/libnosys/warning.h
+--- archive/newlib-2.2.0-1/libgloss/libnosys/warning.h  2005-01-21 15:55:07.000000000 -0600
++++ newlib-2.2.0-1/libgloss/libnosys/warning.h  2024-02-27 19:22:41.768727236 -0600
+@@ -37,8 +37,6 @@
+ 
+ /* A canned warning for sysdeps/stub functions.
+    The GNU linker prepends a "warning: " string.  */
+-#define stub_warning(name) \
+-  link_warning (name, \
+-                #name " is not implemented and will always fail")
++#define stub_warning(name)
+ 
+ #endif /* __WARNING_H__ */
+
